@@ -1,435 +1,77 @@
 <template>
 	<div class="home">
 		<div class="nav">
-			<div class="header">
-				<span class="first">Pretty</span><span>Charts</span>
-				<Divider class="line"/>
-			</div>
-			<div class="header-link">
-				<div class="link">
-					<Icon type="ios-home-outline" size="18"/>
-					<a href="">Dashboard</a>
-				</div>
-				<div class="link">
-					<Icon type="ios-home-outline" size="18"/>
-					<a href="">Todo</a>
-				</div>
-				<div class="link">
-					<Icon type="ios-home-outline" size="18"/>
-					<a href="">Todo</a>
-				</div>
-				<div class="link">
-					<Icon type="ios-home-outline" size="18"/>
-					<a href="">Todo</a>
-				</div>
-				<div class="link">
-					<Icon type="ios-home-outline" size="18"/>
-					<a href="">Todo</a>
-				</div>
-			</div>
+			<span class="left">Multiomics.info</span>
+			<span class="right">
+				<span @click="setActive('home')" :class="{ active: isActive('home') }">Home</span>
+				<span @click="setActive('data')" :class="{ active: isActive('data') }">Data</span>
+				<span @click="setActive('pipelines')" :class="{ active: isActive('pipelines') }">Pipelines</span>
+				<span @click="setActive('terms')" :class="{ active: isActive('terms') }">Terms</span>
+				<span @click="setActive('contact')" :class="{ active: isActive('contact') }">Contact</span>
+			</span>
 		</div>
 		<div class="container">
-			<Row>
-			 	<Col span="12">
-			 		<Card>
-			 			<chart :type='bar.type' :dataSource="bar.dataSource" :height="bar.height"></chart>
-			 		</Card>
-			 	</Col>
-			  	<Col span="11" offset="1">
-			  		<Card>
-			  			<chart :type='mssplinearea.type' :dataSource="mssplinearea.dataSource" :height="mssplinearea.height"></chart>
-			  		</Card>
-			  	</Col>
-			</Row>
-			<Row class="row">
-			  	<Col span="24">
-			  		<Card>
-			  			<chart :type='mscombidy2d.type' :dataSource="mscombidy2d.dataSource" :height="mscombidy2d.height"></chart>
-			  		</Card>	
-			  	</Col>
-			</Row>
+			<div class="banner">
+				<img class="banner-image" style="height: 280px;" src="/banner.png">
+			</div>
+			<div class="info">
+				<Card style="width: 700px; margin:-70px auto 0 auto; text-align: center;">
+			         <h2 class="title">Multiomics Data Portal</h2>
+			         <div style="display: flex; justify-content: space-between; margin:20px 0 30px 0">
+			         	<img style="height: 50px;" src="/logo-mdb-small.png">
+			         	<span style="text-align: left">Collection of Multiomics Datasets and Services. The <strong>multiomics.info</strong> data portal crosslink different omics types (proteomics, genomics and metabolomics) </span>
+			         </div>
+			       	 <a class="action"><i class="fa fa-graduation-cap" aria-hidden="true"></i>Official Documents</a>
+			    </Card>
+			</div>
+			<div class="content">
+				<h2 class="title">What is Multiomics?</h2>
+				<p>Multiomics, multi-omics or integrative omics is a biological analysis approach in which the data sets are multiple "omes", such as the genome, proteome, transcriptome, epigenome, and metabolome; in other words, the use of multiple omics technologies to study life in a concerted way. Multiomics integrates diverse omics data to find a coherently matching geno-pheno-envirotype relationship or association.</p>
+			</div>
+			<div class="card-container">
+				<Card class="card-item">
+			        <img src="/workflow-2.png" style="width: 250px">
+			        <div class="title"><i class="fa fa-cubes" aria-hidden="true"></i>Pipelines</div>
+			        <div class="description">Animations, colors, shadows, skins and many more! Get to know all our css styles in one place.</div>
+			        <div class="action"><a>MORE</a></div>
+			    </Card>
+			    <Card class="card-item" >
+			        <img src="/data-vizualization.png" style="width: 250px">
+			        <div class="title"><i class="fa fa-television" aria-hidden="true"></i>Data Visualization</div>
+			        <div class="description">Ready-to-use components that you can use in your applications. Both basic and extended versions!</div>
+			        <div class="action"><a>MORE</a></div>
+			    </Card>
+			    <Card class="card-item">
+			        <img src="/data-registry.png" style="width: 250px">
+			        <div class="title"><i class="fa fa-code" aria-hidden="true"></i>Download Data</div>
+			        <div class="description">Advanced components such as charts, carousels, tooltips and popovers. All in Material Design version.</div>
+			        <div class="action"><a>MORE</a></div>
+			    </Card>
+			</div> 
+		</div>
+		<div class="footer">
+			@2019 Copyright Multiomics.info 
 		</div>
 	</div>
 </template>
 <script>
-	import chart from '@/components/charts/chart.vue'
-	//import lineChart from '@/components/charts/lineChart.vue'
 	export default {
-	  name: '',
-	  components: { chart },
+	  name: 'home',
 	  data(){
 	  	return {
-	  		bar:{
-	  			type:'column2d',
-	  			height:400,
-	  			dataSource:{
-	              // Chart Configuration
-	              chart: {
-	                  caption: "Countries With Most Oil Reserves [2017-18]",
-	                  subCaption: "In MMbbl = One Million barrels",
-	                  xAxisName: "Country",
-	                  yAxisName: "Reserves (MMbbl)",
-	                  numberSuffix: "K",
-	                  theme: "fusion",
-	                  xAxisNameFontSize:14,
-	                  labelFontSize:14,
-	              },
-	              // Chart Data
-	              data: [
-		                {
-		                    label: "UK",
-		                    value: 90
-		                }, {
-		                    label: "Saudi",
-		                    value: 260
-		                }, {
-		                    label: "India",
-		                    value: 180
-		                }, {
-		                    label: "Iran",
-		                    value: 140
-		                }, {
-		                    label: "Russia",
-		                    value: 115
-		                }, {
-		                    label: "UAE",
-		                    value: 100
-		                }, {
-		                    label: "US",
-		                    value: 30
-		                }, {
-		                    label: "China",
-		                    value: 30
-		                }
-	              ]
-	          	},
-	  		},
-	  		mssplinearea:{
-	  			type:'mssplinearea',
-	  			height:400,
-	  			dataSource:{
-				    "chart": {
-				        "caption": "Number of Footfalls Last Week",
-				        "subCaption": "Garden Groove harbour vs Crompton-Rancho Dom",
-				        "xAxisName": "Day",
-				        "yAxisName": "No. of Footfalls",
-				        "theme": "fusion",
-				        "legendItemFontSize":14,
-				    },
-				    "categories": [
-				        {
-				            "category": [
-				                {
-				                    "label": "Mon"
-				                },
-				                {
-				                    "label": "Tue"
-				                },
-				                {
-				                    "label": "Wed"
-				                },
-				                {
-				                    "vline": "true",
-				                    "lineposition": "0",
-				                    "color": "#6baa01",
-				                    "labelHAlign": "right",
-				                    // "labelPosition": "0",
-				                    // "label": "National holiday"
-				                },
-				                {
-				                    "label": "Thu"
-				                },
-				                {
-				                    "label": "Fri"
-				                },
-				                {
-				                    "label": "Sat"
-				                },
-				                {
-				                    "label": "Sun"
-				                }
-				            ]
-				        }
-				    ],
-				    "dataset": [
-				        {
-				            "seriesname": "Garden Groove harbour",
-				            "data": [
-				                {
-				                    "value": "15123"
-				                },
-				                {
-				                    "value": "14233"
-				                },
-				                {
-				                    "value": "21507"
-				                },
-				                {
-				                    "value": "9110"
-				                },
-				                {
-				                    "value": "14829"
-				                },
-				                {
-				                    "value": "17503"
-				                },
-				                {
-				                    "value": "20202"
-				                }
-				            ]
-				        },
-				        {
-				            "seriesname": "Crompton-Rancho Dom",
-				            "data": [
-				                {
-				                    "value": "11400"
-				                },
-				                {
-				                    "value": "12800"
-				                },
-				                {
-				                    "value": "17800"
-				                },
-				                {
-				                    "value": "10400"
-				                },
-				                {
-				                    "value": "11800"
-				                },
-				                {
-				                    "value": "13100"
-				                },
-				                {
-				                    "value": "20800"
-				                }
-				            ]
-				        }
-				    ]
-				}
-	  		},
-	  		pie:{
-	  			type:'pie2d',
-	  			height:400,
-	  			dataSource:{
-				    "chart": {
-				        "caption": "Split of Visitors by Age Group",
-				        "subCaption": "Last year",
-				        "use3DLighting": "0",
-				        "showPercentValues": "1",
-				        "decimals": "1",
-				        "useDataPlotColorForLabels": "1",
-				        "theme": "fusion"
-				    },
-				    "data": [
-				        {
-				            "label": "Teenage",
-				            "value": "1250400"
-				        },
-				        {
-				            "label": "Adult",
-				            "value": "1463300"
-				        },
-				        {
-				            "label": "Mid-age",
-				            "value": "1050700"
-				        },
-				        {
-				            "label": "Senior",
-				            "value": "491000"
-				        }
-				    ]
-				}
-	  		},
-	  		mscombidy2d:{
-	  			type:'mscombidy2d',
-	  			height:400,
-	  			dataSource:{
-				    "chart": {
-				        "caption": "Revenues and Profits",
-				        "subCaption": "For last year",
-				        "xAxisname": "Month",
-				        "pYAxisName": "Amount (In USD)",
-				        "sYAxisName": "Profit %",
-				        "numberPrefix": "$",
-				        "sNumberSuffix": "%",
-				        "sYAxisMaxValue": "50",
-				        "theme": "fusion"
-				    },
-				    "categories": [
-				        {
-				            "category": [
-				                {
-				                    "label": "Jan"
-				                },
-				                {
-				                    "label": "Feb"
-				                },
-				                {
-				                    "label": "Mar"
-				                },
-				                {
-				                    "label": "Apr"
-				                },
-				                {
-				                    "label": "May"
-				                },
-				                {
-				                    "label": "Jun"
-				                },
-				                {
-				                    "label": "Jul"
-				                },
-				                {
-				                    "label": "Aug"
-				                },
-				                {
-				                    "label": "Sep"
-				                },
-				                {
-				                    "label": "Oct"
-				                },
-				                {
-				                    "label": "Nov"
-				                },
-				                {
-				                    "label": "Dec"
-				                }
-				            ]
-				        }
-				    ],
-				    "dataset": [
-				        {
-				            "seriesName": "Revenues",
-				            "data": [
-				                {
-				                    "value": "16000"
-				                },
-				                {
-				                    "value": "20000"
-				                },
-				                {
-				                    "value": "18000"
-				                },
-				                {
-				                    "value": "19000"
-				                },
-				                {
-				                    "value": "15000"
-				                },
-				                {
-				                    "value": "21000"
-				                },
-				                {
-				                    "value": "16000"
-				                },
-				                {
-				                    "value": "20000"
-				                },
-				                {
-				                    "value": "17000"
-				                },
-				                {
-				                    "value": "22000"
-				                },
-				                {
-				                    "value": "19000"
-				                },
-				                {
-				                    "value": "23000"
-				                }
-				            ]
-				        },
-				        {
-				            "seriesName": "Profits",
-				            "renderAs": "area",
-				            "showValues": "0",
-				            "data": [
-				                {
-				                    "value": "4000"
-				                },
-				                {
-				                    "value": "5000"
-				                },
-				                {
-				                    "value": "3000"
-				                },
-				                {
-				                    "value": "4000"
-				                },
-				                {
-				                    "value": "1000"
-				                },
-				                {
-				                    "value": "7000"
-				                },
-				                {
-				                    "value": "1000"
-				                },
-				                {
-				                    "value": "4000"
-				                },
-				                {
-				                    "value": "1000"
-				                },
-				                {
-				                    "value": "8000"
-				                },
-				                {
-				                    "value": "2000"
-				                },
-				                {
-				                    "value": "7000"
-				                }
-				            ]
-				        },
-				        {
-				            "seriesName": "Profit %",
-				            "parentYAxis": "S",
-				            "renderAs": "line",
-				            "showValues": "0",
-				            "data": [
-				                {
-				                    "value": "25"
-				                },
-				                {
-				                    "value": "25"
-				                },
-				                {
-				                    "value": "16.66"
-				                },
-				                {
-				                    "value": "21.05"
-				                },
-				                {
-				                    "value": "6.66"
-				                },
-				                {
-				                    "value": "33.33"
-				                },
-				                {
-				                    "value": "6.25"
-				                },
-				                {
-				                    "value": "25"
-				                },
-				                {
-				                    "value": "5.88"
-				                },
-				                {
-				                    "value": "36.36"
-				                },
-				                {
-				                    "value": "10.52"
-				                },
-				                {
-				                    "value": "30.43"
-				                }
-				            ]
-				        }
-				    ]
-				}
-	  		},
+	  		activeItem:'home'
+
 	  	}
+	  },
+	  methods:{
+		setActive(menuItem){
+		    this.activeItem = menuItem
+		    console.log('setAcitve')
+		},
+		isActive(menuItem){
+			console.log('isActive')
+			return this.activeItem === menuItem
+		}
 	  },
 	  mounted () {
 	    
@@ -439,68 +81,111 @@
 <style scoped>
 .home {
 	position: relative;
-	height: 100vh;
 	width: 100%;
 	display: flex;
-}
-.container{
-	width: 90%;
-	margin:0 auto;
-	height: 100vh;
-	padding: 40px;
-	overflow-y: scroll;
-}
-.row{
-	margin:40px 0;
+	flex-direction: column;
 }
 .nav{
-	width: 250px;
-	height: 100vh;
-	background-color: white;
-	color:#6c757d;
-	border-right: 1px solid #dcdee2;
-    border-color: #e8eaec;
-}
-.header{
-	padding: 24px 10px 0 10px;
-	font-size: 16px;
-	font-weight: bold;
-	text-align: left;
-}
-.header .first{
-	color:rgb(93, 98, 181);
-	margin-left: 5px;
-	margin-right: 5px;
-	font-size: 20px;
-}
-.header .line{
-	margin-bottom: 0 !important;
-}
-.link{
-	height: 55px;
-    display: flex;
+	display: flex;
+	background-color: #094d8e;
+	color: #eaeaea;
+	width: 100%;
+	justify-content: space-between;
     align-items: center;
-    font-size: 16px;
-    padding-left: 10px;
 }
-.link:hover{
-	background-color: #f8f8f8;
-}
-.link:hover a{
-	color: rgb(93, 98, 181);
+.nav .left{
+	margin-left: 5px;
 	font-weight: bold;
 }
-.link:hover i{
-	color: rgb(93, 98, 181);
-	font-weight: bold;
+.nav .right{
+	display: flex;
 }
-.link a{
-	color:#6c757d;
-	margin-left: 10px;
+.nav .right span{
+	padding:10px 5px;
+	/*margin:0 5px;*/
+	cursor: pointer;
+	width: 70px
+}
+.nav .right span:last-child{
+	/*margin-right: 0;*/
+}
+.nav .right span:hover, .active{
+	background-color: #4787c582;
+	opacity: 0.8
+}
+.container{
+	position: relative;
+	margin-bottom: 50px;
+}
+.banner{
+	text-align: right;
+	padding: 10px;
+	background: #f8f8f8;
+}
+.info .title{
+	font-size: 24px;
+    color: black;
+    margin-top: 10px;
+}
+.info .action{
+	color: #64b499;
+	padding: 5px 10px;
+    border: 1px solid #e8eaec;
+    border-radius: 3px;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+.info .action i{
+	margin-right: 5px;
+}
+.content{
+	width: 50%;
+	margin:40px auto 30px auto;
+}
+.content .title{
+	font-size: 24px;
+    color: black;
+    margin-bottom: 15px;
+}
+.card-container .card-item{
+	display: inline-block;
+	width: 280px;
+	margin: 20px;
+	height: 330px;
+}
+.card-container .card-item .title{
+	text-align: left;
+	font-size: 18px;
+    font-weight: bold;
+    color: black;
+}
+.card-container .card-item .title i{
+	color: #258cea;
+	margin-right:5px;
+}
+.card-container .card-item .description{
+	text-align: left;
+	font-size: 12px;
+	margin: 10px 0 20px 0;
+}
+.card-container .card-item .action{
+	text-align: right;
+}
+.card-container .card-item .action a{
+	padding: 10px 20px;
+    background: black;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+}
+.footer{
+	text-align: center;
+	background-color: #343840;
+	padding:10px;
+	color: #eaeaea;
 }
 </style>
 <style>
-	g[class^='raphael-group-'][class$='-creditgroup'] {
-         display:none !important;
-    }
+
 </style>
+
