@@ -5,8 +5,8 @@ import store from './store'
 
 Vue.config.productionTip = false
 
-import iView from 'iview';
-import '@/assets/extra/theme.less';
+import ViewUI from 'view-design';
+import 'view-design/dist/styles/iview.css';
 import VueResource  from 'vue-resource'
 
 //for vueFusionCharts
@@ -20,7 +20,7 @@ import VueApexCharts from 'vue-apexcharts'
 Vue.use(VueApexCharts)
 Vue.component('apexchart', VueApexCharts)
 
-Vue.use(iView)
+Vue.use(ViewUI)
 Vue.use(VueResource);
 
 Vue.use(VueFusionCharts, FusionCharts, Column2D, FusionTheme);
